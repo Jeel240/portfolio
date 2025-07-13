@@ -8,8 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <button class="menu-toggle" onclick="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <div class="container">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <h1>Jeel Patel</h1>
       <p class="tagline">Web Developer & Designer</p>
       <nav>
@@ -47,6 +53,24 @@
         </section>
     </main>
   </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.querySelector(".sidebar");
+      sidebar.classList.toggle("open");
+    }
+
+    // Close sidebar on link click (for mobile)
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".sidebar nav a").forEach(link => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            document.querySelector(".sidebar").classList.remove("open");
+          }
+        });
+      });
+    });
+  </script>
 
   <script src="assets/js/typing.js"></script>
 </body>
